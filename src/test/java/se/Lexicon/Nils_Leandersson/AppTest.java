@@ -20,6 +20,19 @@ public class AppTest
     }
 
     @Test
+    public void additionMultiple() {
+        //Arrange
+        double[] terms = { 3, 4, 7, -2, 5 };
+        String result;
+
+        //Act
+        result = App.AdditionArray(terms);
+
+        //Assert
+        assertEquals("The sum of 3.0 4.0 7.0 -2.0 5.0 is: 17.0", result);
+    }
+
+    @Test
     public void subtraction() {
         //Arrange
         double a = 5;
@@ -31,6 +44,20 @@ public class AppTest
 
         //Assert
         assertEquals("The difference of 5.0 and 3.0 is: 2.0", result);
+    }
+
+    @Test
+    public void subtractionArray() {
+        //Arrange
+        double minuend = 15;
+        double[] subtrahends = { 3, 2, -2, 4, 1 };
+        String result;
+
+        //Act
+        result = App.SubtractionArray(minuend, subtrahends);
+
+        //Assert
+        assertEquals("The difference of 15.0 and 3.0 2.0 -2.0 4.0 1.0 is: 7.0", result);
     }
 
     @Test

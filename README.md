@@ -1,4 +1,4 @@
-Week 1 Assignment Calculator
+Week 1 Assignment, Calculator
 ========================
 Java, IntelliJ IDEA
 ------------------------------------------------

@@ -1,5 +1,6 @@
 package se.Lexicon.Nils_Leandersson;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class App {
@@ -11,7 +12,9 @@ public class App {
             print("Calculator");
             print("************************");
             print("Press A for Addition");
+            print("Press AM for Addition of many terms");
             print("Press S for Subtraction");
+            print("Press SM for Subtraction with many subtrahends");
             print("Press D for Division");
             print("Press M for Multiplication");
             print("Press X to exit program");
@@ -22,19 +25,27 @@ public class App {
 
             switch (userSelection) {
                 case "a":
-                    print(Addition(getDoubleFromUser("first term: "), getDoubleFromUser("second term: ")));
+                    print(Addition(getDoubleFromUser("First term: "), getDoubleFromUser("Second term: ")));
+                    break;
+
+                case "am":
+                    print(AdditionArray(getDoubleArrayFromUser("Term: ")));
                     break;
 
                 case "s":
-                    print(Subtraction(getDoubleFromUser("minuend: "), getDoubleFromUser("subtrahend: ")));
+                    print(Subtraction(getDoubleFromUser("Minuend: "), getDoubleFromUser("Subtrahend: ")));
+                    break;
+
+                case "sm":
+                    print(SubtractionArray(getDoubleFromUser("Minuend: "), getDoubleArrayFromUser("Subtrahend: ")));
                     break;
 
                 case "d":
-                    print(Division(getDoubleFromUser("dividend: "), getDoubleFromUser("divisor: ")));
+                    print(Division(getDoubleFromUser("Dividend: "), getDoubleFromUser("Divisor: ")));
                     break;
 
                 case "m":
-                    print(Multiplication(getDoubleFromUser("first factor: "), getDoubleFromUser("second factor: ")));
+                    print(Multiplication(getDoubleFromUser("First factor: "), getDoubleFromUser("Second factor: ")));
                     break;
 
                 default:
@@ -50,8 +61,45 @@ public class App {
         return "The sum of " + term1 + " and " + term2 + " is: " + (term1 + term2);
     }
 
+    public static String AdditionArray(double[] terms) {
+        StringBuilder result = new StringBuilder();
+        double sum = 0;
+
+        result.append("The sum of ");
+
+        for (double term : terms) {
+            result.append(term);
+            result.append(" ");
+            sum += term;
+        }
+
+        result.append("is: ");
+        result.append(sum);
+
+        return result.toString();
+    }
+
     public static String Subtraction(double minuend, double subtrahend) {
         return "The difference of " + minuend + " and " + subtrahend + " is: " + (minuend - subtrahend);
+    }
+
+    public static String SubtractionArray(double minuend, double[] subtrahends) {
+        StringBuilder result = new StringBuilder();
+
+        result.append("The difference of ");
+        result.append(minuend);
+        result.append(" and ");
+
+        for (double subtrahend : subtrahends) {
+            result.append(subtrahend);
+            result.append(" ");
+            minuend -= subtrahend;
+        }
+
+        result.append("is: ");
+        result.append(minuend);
+
+        return result.toString();
     }
 
     public static String Division(double dividend, double divisor) {
@@ -85,5 +133,19 @@ public class App {
                 System.out.println("Input was not a number");
             }
         }
+    }
+
+    public static double[] getDoubleArrayFromUser(String prompt) {
+        double[] doublesFromUser = new double[0];
+
+        while(true) {
+            double doubleFromUser = getDoubleFromUser(prompt + " (0 to end");
+
+            if (doubleFromUser == 0) break;
+            doublesFromUser = Arrays.copyOf(doublesFromUser, doublesFromUser.length + 1);
+            doublesFromUser[doublesFromUser.length - 1] = doubleFromUser;
+        }
+
+        return doublesFromUser;
     }
 }
