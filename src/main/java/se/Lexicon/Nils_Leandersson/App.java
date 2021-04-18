@@ -138,8 +138,10 @@ public class App {
     public static double[] getDoubleArrayFromUser(String prompt) {
         double[] doublesFromUser = new double[0];
 
+        print("Enter 0 to end input");
+
         while(true) {
-            double doubleFromUser = getDoubleFromUser(prompt + " (0 to end");
+            double doubleFromUser = getDoubleFromUser(prompt);
 
             if (doubleFromUser == 0) break;
             doublesFromUser = Arrays.copyOf(doublesFromUser, doublesFromUser.length + 1);
