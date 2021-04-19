@@ -1,4 +1,4 @@
-package se.Lexicon.Nils_Leandersson;
+package calculator;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -9,7 +9,7 @@ public class App {
         while (true) {
             String userSelection;
 
-            print("Calculator");
+            print("\nCalculator");
             print("************************");
             print("Press A for Addition");
             print("Press AM for Addition of many terms");
@@ -52,8 +52,7 @@ public class App {
                     print("Invalid selection");
                     break;
             }
-            print("Press Enter to continue");
-            getStringFromUser("");
+            getStringFromUser("Press Enter to continue");
         }
     }
 

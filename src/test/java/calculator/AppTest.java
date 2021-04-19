@@ -1,4 +1,4 @@
-package se.Lexicon.Nils_Leandersson;
+package calculator;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
